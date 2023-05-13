@@ -1,5 +1,5 @@
 import Nav from '../components/core/navBar'
-import {Button, Container, createIcon, Flex, Heading, Icon, IconProps, Stack, Text,} from '@chakra-ui/react';
+import {Button, Container, createIcon, Flex, Heading, Stack, Text,} from '@chakra-ui/react';
 
 const Home = () => {
     return (
