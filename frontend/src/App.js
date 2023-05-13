@@ -8,6 +8,7 @@ import VehicleForm from './Vehicle/VehicleForm';
 import List from './Vehicle/VehicleList';
 import InsuranceForm from './Insurance/InsuranceForm';
 import DriverForm from './Driver/DriverForm';
+import Admin from './admin';
 import {Box, ChakraProvider, Grid, theme} from '@chakra-ui/react';
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
                             <Route path="/VehicleList" element={<List />} />
                             <Route path="/InsuranceAdd" element={<InsuranceForm />} />
                             <Route path="/DriverAdd" element={ <DriverForm /> } />
+                            <Route path="/admin" element={ <Admin /> } />
                         </Routes>
                     </BrowserRouter>
                 </Grid>
