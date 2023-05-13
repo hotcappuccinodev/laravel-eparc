@@ -9,7 +9,6 @@ import {
     Input,
     InputGroup,
     InputRightElement,
-    Link,
     Stack,
     Text,
 } from '@chakra-ui/react';
@@ -156,12 +155,12 @@ export default function Register() {
                                     Sign up
                                 </Button>
                             </Stack>
-                            <Stack pt={6}>
-                                <Text align={'center'}>
-                                    Already a user?{' '}
-                                    <Link color={'red.400'} as={ReachLink} to={'/login'}>
-                                        <ReachLink to={'/login'}>Login</ReachLink>
-                                    </Link>
+                            <Stack pt={6} align={'center'}>
+                                <Text display={'flex'}>
+                                    Already a user? {'  '}
+                                    <Text color={'red.400'} align={'justify'} ml={'2'}>
+                                        <ReachLink color={'red.400'} to={'/login'}>Login</ReachLink>
+                                    </Text>
                                 </Text>
                             </Stack>
                         </Stack>

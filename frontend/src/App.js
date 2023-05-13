@@ -8,8 +8,6 @@ import VehicleForm from './Vehicle/VehicleForm';
 import List from './Vehicle/VehicleList';
 import InsuranceForm from './Insurance/InsuranceForm';
 import DriverForm from './Driver/DriverForm';
-import IList from './Insurance/InsuranceList';
-
 import {Box, ChakraProvider, Grid, theme} from '@chakra-ui/react';
 
 function App() {
