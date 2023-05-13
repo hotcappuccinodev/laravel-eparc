@@ -14,6 +14,7 @@ import {
     Text,
 } from '@chakra-ui/react';
 import {useState} from 'react';
+import footer from '../components/footer';
 import {Link as ReachLink} from 'react-router-dom';
 import {ViewIcon, ViewOffIcon} from '@chakra-ui/icons';
 
@@ -67,17 +68,20 @@ export default function Login() {
                     </Stack>
                 </Stack>
             </Flex>
-            <Flex flex={1}>
+            <Flex flex={1} className={'hidden md:block'}>
                 <Image
                     alt={'Login Image'}
                     h={'100vh'}
                     w={'100%'}
+                    p={'10'}
                     objectFit={'cover'}
+                    className={'hidden md:block'}
                     src={
-                        'https://images.pexels.com/photos/1805053/pexels-photo-1805053.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+                        '/login.svg'
                     }
                 />
             </Flex>
+            <footer/>
         </Stack>
     );
 }

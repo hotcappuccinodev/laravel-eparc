@@ -65,7 +65,19 @@ export default function Register() {
     const [showPasswordConfirm, setShowPasswordConfirm] = useState(false);
     return (
         <Stack minH={'100vh'} direction={{base: 'column', md: 'row'}}>
-            <Flex p={8} flex={1} align={'center'} justify={'center'}>
+            <Flex flex={1} className={'hidden md:block'}>
+                <Image
+                    className={'hidden md:block'}
+                    alt={'Login Image'}
+                    h={'100vh'}
+                    w={'70%'}
+                    objectFit={'cover'}
+                    src={
+                        '/register.svg'
+                    }
+                />
+            </Flex>
+            <Flex p={8} flex={2} align={'center'} justify={'center'}>
                 <form onSubmit={handleRegister}>
                     <Stack spacing={4} w={'full'} maxW={'md'}>
                         <Heading fontSize={'2xl'} mb={'10'}>
@@ -152,17 +164,6 @@ export default function Register() {
                         </Stack>
                     </Stack>
                 </form>
-            </Flex>
-            <Flex flex={1}>
-                <Image
-                    alt={'Login Image'}
-                    h={'100vh'}
-                    w={'100%'}
-                    objectFit={'cover'}
-                    src={
-                        'https://images.pexels.com/photos/1805053/pexels-photo-1805053.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
-                    }
-                />
             </Flex>
         </Stack>
     );
