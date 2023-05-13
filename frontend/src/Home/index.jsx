@@ -1,10 +1,13 @@
+import Nav from '../components/core/navBar'
 
 const Home = () => {
-  return (
-    <div>
-        <h1>Home Page</h1>
-    </div>
-  )
+    return (
+        <div>
+            <Nav/>
+
+
+        </div>
+    )
 }
 
 export default Home
