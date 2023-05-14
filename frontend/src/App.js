@@ -10,13 +10,14 @@ import InsuranceForm from './Insurance/InsuranceForm';
 import DriverForm from './Driver/DriverForm';
 import Admin from './admin';
 import {Box, ChakraProvider, Grid, theme} from '@chakra-ui/react';
+import {ColorModeSwitcher} from './init/ColorModeSwitcher'
 
 function App() {
 
     return (
         <ChakraProvider theme={theme} className={"screen"}>
             <Box textAlign="center" fontSize="xl">
-                <Grid minH="100vh">
+                <Grid minH="100vh" position={'relative'}>
                     <BrowserRouter>
                         <Routes>
                             <Route path="/" element={<HomePage/>}/>
@@ -29,6 +30,9 @@ function App() {
                             <Route path="/admin" element={<Admin/>}/>
                         </Routes>
                     </BrowserRouter>
+                    <Box position={'absolute'} right={5} bottom={5}>
+                        <ColorModeSwitcher/>
+                    </Box>
                 </Grid>
             </Box>
         </ChakraProvider>
