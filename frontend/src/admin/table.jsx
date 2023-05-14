@@ -50,7 +50,7 @@ function Tables() {
                                                 domain={row.domain}
                                                 status={row.status}
                                                 date={row.date}
-                                                isLast={index === arr.length - 1 ? true : false}
+                                                isLast={index === arr.length - 1}
                                                 key={index}
                                             />
                                         );
