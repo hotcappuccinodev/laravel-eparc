@@ -70,6 +70,7 @@ export default function Register() {
                     <Image
                         className={'hidden md:block'}
                         alt={'Login Image'}
+                        pt={'6vh'}
                         h={'100vh'}
                         w={'70%'}
                         objectFit={'cover'}
@@ -78,7 +79,7 @@ export default function Register() {
                         }
                     />
                 </Flex>
-                <Flex p={8} flex={2} align={'center'} justify={'center'}>
+                <Flex p={8} flex={3} align={'center'} justify={'center'}>
                     <form onSubmit={handleRegister}>
                         <Stack spacing={4} w={'full'} maxW={'md'}>
                             <Heading fontSize={'2xl'} mb={'10'}>
@@ -158,9 +159,16 @@ export default function Register() {
                             <Stack pt={6} align={'center'}>
                                 <Text display={'flex'}>
                                     Already a user? {'  '}
-                                    <Text color={'red.400'} align={'justify'} ml={'2'}>
-                                        <ReachLink color={'red.400'} to={'/login'}>Login</ReachLink>
-                                    </Text>
+                                    <Button
+                                        as={ReachLink}
+                                        to={'/login'}
+                                        variant={'link'}
+                                        color={'red.400'}
+                                        align={'justify'}
+                                        ml={'2'}
+                                    >
+                                        Login
+                                    </Button>
                                 </Text>
                             </Stack>
                         </Stack>

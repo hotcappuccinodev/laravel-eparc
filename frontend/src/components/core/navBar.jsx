@@ -65,17 +65,17 @@ export default function WithSubnavigation() {
                     direction={'row'}
                     spacing={6}>
                     <Button
-                        as={'a'}
+                        as={ReachLink}
+                        to={'/login'}
                         fontSize={'sm'}
                         fontWeight={400}
                         variant={'link'}
-                        href={'#'}>
-                        <ReachLink to={'/login'}>
-                            Sign In
-                        </ReachLink>
+                    >
+                        Sign In
                     </Button>
                     <Button
-                        as={'a'}
+                        as={ReachLink}
+                        to={'/register'}
                         display={{base: 'none', md: 'inline-flex'}}
                         fontSize={'sm'}
                         fontWeight={600}
@@ -85,9 +85,7 @@ export default function WithSubnavigation() {
                         _hover={{
                             bg: 'pink.300',
                         }}>
-                        <ReachLink to={'/register'}>
-                            Sign Up
-                        </ReachLink>
+                        Sign Up
                     </Button>
                 </Stack>
             </Flex>

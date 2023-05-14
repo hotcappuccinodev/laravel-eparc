@@ -65,9 +65,16 @@ export default function Login() {
                         <Stack pt={6} align={'center'}>
                             <Text display={'flex'}>
                                 You D'ont Have a Account ?{' '}
-                                <Text color={'red.400'} align={'justify'} ml={'2'}>
-                                    <ReachLink to={'/register'}>Register</ReachLink>
-                                </Text>
+                                <Button
+                                    as={ReachLink}
+                                    to={'/register'}
+                                    variant={'link'}
+                                    color={'red.400'}
+                                    align={'justify'}
+                                    ml={'2'}
+                                >
+                                    Register
+                                </Button>
                             </Text>
                         </Stack>
                     </Stack>
@@ -89,6 +96,5 @@ export default function Login() {
                 <FooterBanner/>
             </div>
         </div>
-    )
-        ;
+    );
 }
