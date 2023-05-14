@@ -1,14 +1,14 @@
 import React from 'react';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import './style/index.css';
-import Register from './auth/Register';
-import Login from './auth/Login';
-import HomePage from './Home';
+import Register from './pages/auth/Register';
+import Login from './pages/auth/Login';
+import HomePage from './pages/Home';
 import VehicleForm from './Vehicle/VehicleForm';
 import List from './Vehicle/VehicleList';
-import InsuranceForm from './Insurance/InsuranceForm';
-import DriverForm from './Driver/DriverForm';
-import Admin from './admin';
+import InsuranceForm from './pages/Insurance/InsuranceForm';
+import DriverForm from './pages/Driver/DriverForm';
+import Admin from './pages/admin';
 import {Box, ChakraProvider, Grid, theme} from '@chakra-ui/react';
 import {ColorModeSwitcher} from './init/ColorModeSwitcher'
 

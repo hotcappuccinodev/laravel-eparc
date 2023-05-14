@@ -16,8 +16,8 @@ import {useState} from 'react';
 import {ViewIcon, ViewOffIcon} from '@chakra-ui/icons';
 import {Link as ReachLink} from 'react-router-dom';
 import Swal from 'sweetalert2'
-import axios from '../plugins/axios';
-import FooterBanner from "../components/footerBanner";
+import axios from '../../plugins/axios';
+import FooterBanner from "../../components/footerBanner";
 
 export default function Register() {
     const [showPassword, setShowPassword] = useState(false);
@@ -66,7 +66,7 @@ export default function Register() {
     return (
         <div className={'h-screen max-h-screen relative'}>
             <Stack minH={'100vh'} direction={{base: 'column', md: 'row'}}>
-                <Flex display={{base: "none", md: "flex"}} flex={1}  p={8} align={'center'} justify={'center'}>
+                <Flex display={{base: "none", md: "flex"}} flex={1} p={8} align={'center'} justify={'center'}>
                     <Image
                         className={'hidden md:block'}
                         alt={'Login Image'}

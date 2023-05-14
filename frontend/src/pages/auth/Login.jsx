@@ -23,10 +23,10 @@ import {
     useToast
 } from '@chakra-ui/react';
 import {useRef, useState} from 'react';
-import FooterBanner from '../components/footerBanner';
+import FooterBanner from '../../components/footerBanner';
 import {ViewIcon, ViewOffIcon} from '@chakra-ui/icons';
 import {Link as ReachLink} from 'react-router-dom';
-import axios from '../plugins/axios';
+import axios from '../../plugins/axios';
 
 export default function Login() {
 

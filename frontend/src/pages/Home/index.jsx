@@ -1,5 +1,5 @@
-import Nav from '../components/core/navBar'
-import Footer from '../components/core/footer'
+import Nav from '../../components/core/navBar'
+import Footer from '../../components/core/footer'
 import Company from './company'
 import {Button, Container, createIcon, Flex, Heading, Stack, Text,} from '@chakra-ui/react';
 
