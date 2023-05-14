@@ -66,20 +66,18 @@ export default function Register() {
     return (
         <div className={'h-screen max-h-screen relative'}>
             <Stack minH={'100vh'} direction={{base: 'column', md: 'row'}}>
-                <Flex flex={1} className={'hidden md:block'}>
+                <Flex display={{base: "none", md: "flex"}} flex={1}  p={8} align={'center'} justify={'center'}>
                     <Image
                         className={'hidden md:block'}
                         alt={'Login Image'}
-                        pt={'6vh'}
-                        h={'100vh'}
-                        w={'70%'}
                         objectFit={'cover'}
                         src={
                             '/register.svg'
                         }
+                        p={8}
                     />
                 </Flex>
-                <Flex p={8} flex={3} align={'center'} justify={'center'}>
+                <Flex p={8} flex={1} align={'center'} justify={'center'}>
                     <form onSubmit={handleRegister}>
                         <Stack spacing={4} w={'full'} maxW={'md'}>
                             <Heading fontSize={'2xl'} mb={'10'}>
@@ -142,7 +140,7 @@ export default function Register() {
                                     </InputRightElement>
                                 </InputGroup>
                             </FormControl>
-                            <Stack spacing={10} pt={2} mt={'10'}>
+                            <Stack spacing={15} pt={2} mt={'10'}>
                                 <Button
                                     loadingText="Submitting"
                                     type="submit"
