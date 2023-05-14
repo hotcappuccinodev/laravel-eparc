@@ -4,7 +4,7 @@ import {Button, Container, createIcon, Flex, Heading, Stack, Text,} from '@chakr
 
 const Home = () => {
     return (
-        <>
+        <div className={'screen'}>
             <div className={'h-screen hero'} style={{backgroundImage: "url('/hero.jpg')", backgroundSize: "cover"}}>
                 <Nav/>
                 <Container maxW={'7xl'}>
@@ -77,7 +77,7 @@ const Home = () => {
                 </Container>
             </div>
             <Footer/>
-        </>
+        </div>
     )
 }
 

@@ -14,8 +14,8 @@ import {Box, ChakraProvider, Grid, theme} from '@chakra-ui/react';
 function App() {
 
     return (
-        <ChakraProvider theme={theme}>
-            <Box textAlign="center" fontSize="xl" className={"screen"}>
+        <ChakraProvider theme={theme} className={"screen"}>
+            <Box textAlign="center" fontSize="xl">
                 <Grid minH="100vh">
                     <BrowserRouter>
                         <Routes>
