@@ -49,6 +49,7 @@ export default function Login() {
     const EMAIL_REGEX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
     const {isOpen, onOpen, onClose} = useDisclosure()
+
     const cancelRef = useRef()
 
     function handleEmailInputChange(e) {
