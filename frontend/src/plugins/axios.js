@@ -1,6 +1,8 @@
-import axios from 'axios';
+import axios from "axios";
 
-const instance = axios.create({
-    baseURL: 'http://127.0.0.1:8000/api'
-});
-export default instance;
+axios.defaults.withCredentials = true
+axios.defaults.baseURL = "http://127.0.0.1:8000"
+
+axios.get('/sanctum/csrf-cookie');
+
+export default axios;

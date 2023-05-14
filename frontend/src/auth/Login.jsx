@@ -26,7 +26,7 @@ import {useRef, useState} from 'react';
 import FooterBanner from '../components/footerBanner';
 import {ViewIcon, ViewOffIcon} from '@chakra-ui/icons';
 import {Link as ReachLink} from 'react-router-dom';
-import axios from "axios";
+import axios from '../plugins/axios';
 
 export default function Login() {
 
@@ -88,7 +88,7 @@ export default function Login() {
         try {
             const response = await axios({
                 method: 'POST',
-                url: '/register',
+                url: '/login',
                 data: {
                     email: emailInput,
                     password: passwordInput,
@@ -224,7 +224,7 @@ export default function Login() {
                             </Flex>
                         </AlertDialogHeader>
                         <AlertDialogCloseButton/>
-                        <AlertDialogBody fontSize={20}>
+                        <AlertDialogBody fontSize={25}>
                             Email or Password is incorrect ! verify your credentials and try again.
                         </AlertDialogBody>
                         <AlertDialogFooter>
