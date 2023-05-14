@@ -26,7 +26,7 @@ function Tables() {
                         </Text>
                     </CardHeader>
                     <CardBody>
-                        <TableContainer>
+                        <TableContainer bg={bg} p={5}>
                             <Table variant="simple" color={textColor}>
                                 <Thead>
                                     <Tr my=".8rem" pl="0px" color="gray.400">
