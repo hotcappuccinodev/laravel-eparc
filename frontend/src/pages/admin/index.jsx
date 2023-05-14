@@ -1,5 +1,5 @@
 import Dash from '../../components/admin/dash'
-import Table from '../pages/Vehicle/VehiculeTable'
+import Table from '../Vehicle/VehiculeTable'
 import Table2 from './table'
 
 const Admin = () => {

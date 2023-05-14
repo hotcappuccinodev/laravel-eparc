@@ -4,8 +4,6 @@ import './style/index.css';
 import Register from './pages/auth/Register';
 import Login from './pages/auth/Login';
 import HomePage from './pages/Home';
-import VehicleForm from './Vehicle/VehicleForm';
-import List from './Vehicle/VehicleList';
 import InsuranceForm from './pages/Insurance/InsuranceForm';
 import DriverForm from './pages/Driver/DriverForm';
 import Admin from './pages/admin';
