@@ -6,7 +6,6 @@ import CardBody from "../components/Card/CardBody.js";
 import CardHeader from "../components/Card/CardHeader.js";
 import TablesProjectRow from "../components/Tables/TablesProjectRow";
 import TablesTableRow from "../components/Tables/TablesTableRow";
-import React from "react";
 import {tablesProjectData, tablesTableData} from "../variables/general";
 
 
@@ -17,7 +16,7 @@ function Tables() {
 
 
     return (
-        <Box px={10}>
+        <Box px={10} w={'100%'}>
             <Flex direction="column" pt={{base: "120px", md: "75px"}}>
                 <Card overflowX={{sm: "scroll", xl: "hidden"}} pb="0px">
                     <CardHeader p="6px 0px 22px 0px">
