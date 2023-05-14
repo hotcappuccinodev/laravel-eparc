@@ -211,7 +211,7 @@ export default function Login() {
                     <AlertDialogOverlay/>
 
                     <AlertDialogContent>
-                        <AlertDialogHeader display={'flex'} justifyContent={'center'} justifyItems={'center'}>
+                        <AlertDialogHeader>
                             <Flex alignItems={'center'}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"
                                      fill="none" aria-hidden="true" focusable="false" className="sc-9e9a943c-6 eiTZPY">
@@ -224,7 +224,7 @@ export default function Login() {
                             </Flex>
                         </AlertDialogHeader>
                         <AlertDialogCloseButton/>
-                        <AlertDialogBody fontSize={25}>
+                        <AlertDialogBody fontSize={20}>
                             Email or Password is incorrect ! verify your credentials and try again.
                         </AlertDialogBody>
                         <AlertDialogFooter>
