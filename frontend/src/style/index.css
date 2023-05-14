@@ -5,3 +5,26 @@
 /*.hero{*/
 /*    background-image: url('hero.jpg');*/
 /*}*/
+
+.screen {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.overflow-x {
+    overflow-x: auto !important;
+}
+
+.screen::-webkit-scrollbar,.overflow-x::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+.screen::-webkit-scrollbar-track,.overflow-x::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.screen:hover::-webkit-scrollbar-thumb,.overflow-x:hover::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: rgba(141, 141, 141, 0.42);
+}

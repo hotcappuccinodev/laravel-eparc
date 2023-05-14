@@ -4,9 +4,13 @@
 
 
 .new_footer_top {
-    padding: 120px 0px 270px;
+    padding: 120px 0 270px;
     position: relative;
     overflow-x: hidden;
+}
+
+.new_footer_toP {
+    padding: 0 0 44px !important;
 }
 
 .new_footer_area .footer_bottom {
@@ -19,7 +23,7 @@
     font-weight: 300;
     line-height: 20px;
     color: #7f88a6;
-    padding: 27px 0px;
+    padding: 27px 0;
 }
 
 .new_footer_top .company_widget p {
@@ -63,7 +67,7 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
 }
 
 .f_widget.about-widget .f_list li:last-child {
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 
 .f_widget.about-widget .f_list li {
@@ -71,7 +75,7 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
 }
 
 .f_widget.about-widget .f_list {
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 
 .new_footer_top .f_social_icon a {
