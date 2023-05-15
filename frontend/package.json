@@ -21,6 +21,7 @@
     "react-dom": "^18.2.0",
     "react-icons": "^3.11.0",
     "react-scripts": "5.0.1",
+    "remixicon": "^3.2.0",
     "styled-components": "^5.3.10",
     "sweetalert2": "^11.7.5",
     "web-vitals": "^2.1.4"

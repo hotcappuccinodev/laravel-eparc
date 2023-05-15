@@ -104,11 +104,11 @@ export default function Login() {
     }
 
     return (
-        <div className={'h-screen max-h-screen relative'}>
+        <div className={'h-screen max-h-screen relative'} >
             <Stack height={'100vh'} direction={{base: 'column', md: 'row'}}>
                 <Flex flex={1} align={'center'} justify={'center'} className={'pt-10 md:pt-0'}>
                     <Stack p={8} spacing={4} w={'full'} maxW={'md'}>
-                        <Heading fontSize={'2xl'} mb={'10'}>
+                        <Heading fontSize='2xl' mb='10' >
                             Sign in to your account
                         </Heading>
                         <FormControl id="email" isInvalid={emailError} isRequired>

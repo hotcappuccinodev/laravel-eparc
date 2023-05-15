@@ -1,7 +1,7 @@
 import {
     Button,
     Flex,
-    FormControl,
+    FormControl, FormErrorMessage,
     FormLabel,
     Heading,
     HStack,
@@ -35,6 +35,11 @@ export default function Register() {
             [e.target.id]: e.target.value,
         });
     };
+
+    const [emailError, setEmailError] = useState(false)
+    const [passwordError, setPasswordError] = useState(false)
+
+
 
     const handleRegister = async e => {
         e.preventDefault();
@@ -88,6 +93,7 @@ export default function Register() {
                                 <FormControl id="firstName" isRequired>
                                     <FormLabel>First Name</FormLabel>
                                     <Input type="text" onChange={handleChange}/>
+
                                 </FormControl>
 
                                 <FormControl id="lastName">

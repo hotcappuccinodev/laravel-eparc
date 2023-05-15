@@ -19,14 +19,19 @@ import {
     useDisclosure,
     VStack,
 } from '@chakra-ui/react';
-import {FiBell, FiChevronDown, FiCompass, FiHome, FiMenu, FiSettings, FiStar, FiTrendingUp,} from 'react-icons/fi';
-
+import {FiBell, FiChevronDown, FiCompass, FiHome, FiMenu, FiSettings, FiStar, FiTrendingUp} from 'react-icons/fi';
+import {IoMdCar} from 'react-icons/io';
+import {RiSteering2Fill} from 'react-icons/ri';
+import {HiOutlineNewspaper} from 'react-icons/hi';
 
 const LinkItems = [
     {name: 'Home', icon: FiHome},
     {name: 'Trending', icon: FiTrendingUp},
     {name: 'Explore', icon: FiCompass},
     {name: 'Favourites', icon: FiStar},
+    {name: 'Car', icon: IoMdCar},
+    {name: 'insurance', icon: HiOutlineNewspaper},
+    {name: 'Driver', icon: RiSteering2Fill},
     {name: 'Settings', icon: FiSettings},
 ];
 
