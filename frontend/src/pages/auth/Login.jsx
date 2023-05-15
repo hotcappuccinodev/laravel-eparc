@@ -97,7 +97,6 @@ export default function Login() {
                 },
             })
             console.log(response)
-
         } catch (error) {
             console.log(error)
             onOpen();
@@ -237,6 +236,5 @@ export default function Login() {
                 </AlertDialog>
             </>
         </div>
-    )
-        ;
+    );
 }
