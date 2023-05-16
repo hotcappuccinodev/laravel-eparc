@@ -8,7 +8,7 @@ const Home = () => {
         <>
             <div className={'h-screen'}>
                 <Nav/>
-                <div className={'h-[calc(100vh-60px)] hero'}
+                <div className={'h-screen hero'}
                      style={{backgroundImage: "url('/images/hero.png')", backgroundSize: "cover", objectFit: "cover"}}>
 
                     <Container maxW={'7xl'}>
