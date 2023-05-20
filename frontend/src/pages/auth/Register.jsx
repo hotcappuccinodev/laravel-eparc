@@ -102,7 +102,6 @@ export default function Register() {
             console.log(error)
             await Swal.fire('Erreur', '', 'error')
         }
-
     };
 
     return (
@@ -125,7 +124,6 @@ export default function Register() {
                             Creat a new account
                         </Heading>
                         <HStack>
-
                             <FormControl id="firstName" isInvalid={firstNameError} isRequired>
                                 <FormLabel>First Name</FormLabel>
                                 <Input type="text" value={data.firstName} onChange={handleChange}/>
@@ -133,7 +131,6 @@ export default function Register() {
                                     <FormErrorMessage>First Name is required</FormErrorMessage>
                                 ) : (<br/>)}
                             </FormControl>
-
                             <FormControl id="lastName" isInvalid={lastNameError} isRequired>
                                 <FormLabel>Last Name</FormLabel>
                                 <Input type="text" onChange={handleChange}/>
@@ -141,7 +138,6 @@ export default function Register() {
                                     <FormErrorMessage>Last Name is required</FormErrorMessage>
                                 ) : (<br/>)}
                             </FormControl>
-
                         </HStack>
                         <FormControl id="email" isInvalid={emailError} isRequired>
                             <FormLabel>Email address</FormLabel>
@@ -170,7 +166,7 @@ export default function Register() {
                             </InputGroup>
                             {passwordError ? (
                                 <FormErrorMessage>{passwordErrorMsg}</FormErrorMessage>
-                            ) : (<br/>)}
+                            ) : ('')}
                         </FormControl>
                         <FormControl id="password_confirmation" isInvalid={confirmPasswordError} isRequired>
                             <FormLabel>Confirm Password</FormLabel>
@@ -194,7 +190,7 @@ export default function Register() {
                             </InputGroup>
                             {confirmPasswordError ? (
                                 <FormErrorMessage>{confirmPasswordErrorMsg}</FormErrorMessage>
-                            ) : (<br/>)}
+                            ) : ('')}
                         </FormControl>
                         <Stack spacing={15} pt={2} mt={'10'}>
                             <Button
