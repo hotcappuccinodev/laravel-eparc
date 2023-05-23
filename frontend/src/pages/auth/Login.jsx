@@ -96,9 +96,9 @@ export default function Login() {
                     rememberMe: rememberMe
                 },
             })
-            console.log(response)
+            console.log(response);
         } catch (error) {
-            console.log(error)
+            console.log(error);
             onOpen();
         }
     }
