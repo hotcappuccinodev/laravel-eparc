@@ -132,6 +132,7 @@
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/nunomaduro/termwind" />
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/nunomaduro/collision" />
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/myclabs/deep-copy" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/symfony/polyfill-php83" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
