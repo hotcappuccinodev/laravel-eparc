@@ -120,7 +120,7 @@ export default function Register() {
             password !== password_confirmation ||
             password.length < 8
         ) {
-            setIsHandelRegister(false); 
+            setIsHandelRegister(false);
             toast({
                 title: 'Please fill in all required fields.',
                 status: 'error',
