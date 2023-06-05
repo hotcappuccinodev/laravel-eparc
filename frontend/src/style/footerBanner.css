@@ -168,7 +168,11 @@ h1, h2, h3, h4, h5, h6 {
     bottom: 0;
     background: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEigB8iI5tb8WSVBuVUGc9UjjB8O0708X7Fdic_4O1LT4CmLHoiwhanLXiRhe82yw0R7LgACQ2IhZaTY0hhmGi0gYp_Ynb49CVzfmXtYHUVKgXXpWvJ_oYT8cB4vzsnJLe3iCwuzj-w6PeYq_JaHmy_CoGoa6nw0FBo-2xLdOPvsLTh_fmYH2xhkaZ-OGQ/s16000/footer_bg.png") no-repeat scroll center 0;
     width: 100%;
-    height: 20vh;
+    height: 35vh;
+}
+
+.footer_auth_bg{
+    height: 20vh !important;
 }
 
 .new_footer_top .footer_bg .footer_bg_one {

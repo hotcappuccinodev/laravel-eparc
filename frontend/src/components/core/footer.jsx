@@ -137,10 +137,11 @@ const Footer = () => {
                         </SimpleGrid>
                     </Container>
                 </Box>
-                <div className="footer_bg">
+                <Box
+                    bg={useColorModeValue('gray.50', 'gray.900')} className="footer_bg">
                     <div className="footer_bg_one"></div>
                     <div className="footer_bg_two"></div>
-                </div>
+                </Box>
             </div>
         </footer>
     )
