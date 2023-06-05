@@ -1,101 +1,159 @@
-const people = [
-    {
-        name: 'Lindsay Walton',
-        title: 'Front-end Developer',
-        department: 'Optimization',
-        email: 'lindsay.walton@example.com',
-        role: 'Member',
-        image:
-            'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-    },
-    // More people...
-]
+import React, { useState,useEffect } from 'react';
+import axios from 'axios';
+import { useNavigate,useParams} from 'react-router-dom';
+import {
+  Box,
+  Button,
+  Flex,
+  FormControl,
+  FormLabel,
+  Heading,
+  Input,
+  Stack,
+  useColorModeValue,
+} from '@chakra-ui/react';
 
-export default function Example() {
-    return (
-        <div className="px-4 sm:px-6 lg:px-8">
-            <div className="sm:flex sm:items-center">
-                <div className="sm:flex-auto">
-                    <h1 className="text-xl font-semibold text-gray-900">Users</h1>
-                    <p className="mt-2 text-sm text-gray-700">
-                        A list of all the users in your account including their name, title, email and role.
-                    </p>
-                </div>
-                <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-                    <button
-                        type="button"
-                        className="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto"
-                    >
-                        Add user
-                    </button>
-                </div>
-            </div>
-            <div className="mt-8 flex flex-col">
-                <div className="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                    <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-                        <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
-                            <table className="min-w-full divide-y divide-gray-300">
-                                <thead className="bg-gray-50 dark:bg-gray-800">
-                                <tr>
-                                    <th scope="col"
-                                        className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
-                                        Name
-                                    </th>
-                                    <th scope="col"
-                                        className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                        Title
-                                    </th>
-                                    <th scope="col"
-                                        className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                        Status
-                                    </th>
-                                    <th scope="col"
-                                        className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                        Role
-                                    </th>
-                                    <th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-6">
-                                        <span className="sr-only">Edit</span>
-                                    </th>
-                                </tr>
-                                </thead>
-                                <tbody className="divide-y divide-gray-200 bg-white dark:bg-gray-900">
-                                {people.map((person) => (
-                                    <tr key={person.email}>
-                                        <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
-                                            <div className="flex items-center">
-                                                <div className="h-10 w-10 flex-shrink-0">
-                                                    <img className="h-10 w-10 rounded-full" src={person.image} alt=""/>
-                                                </div>
-                                                <div className="ml-4">
-                                                    <div className="font-medium text-gray-900">{person.name}</div>
-                                                    <div className="text-gray-500">{person.email}</div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                            <div className="text-gray-900">{person.title}</div>
-                                            <div className="text-gray-500">{person.department}</div>
-                                        </td>
-                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        <span
-                            className="inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800">
-                          Active
-                        </span>
-                                        </td>
-                                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{person.role}</td>
-                                        <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                            <a href="#" className="text-indigo-600 hover:text-indigo-900">
-                                                Edit<span className="sr-only">, {person.name}</span>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                ))}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    )
+
+export default function DriverEdit() {
+ const navigate = useNavigate();
+ const { ID_DRIVER } = useParams();
+
+  const [name, setName] = useState('')
+  const [Firstname, setFirstName] = useState('')
+  const [num, setNum] = useState('')
+  const [date, setDate] = useState('')
+    
+    useEffect(()=>{
+        fetchDriver(); 
+    },[])
+    
+    const fetchDriver = async () => {
+      try {
+        const response = await axios.get(`http://127.0.0.1:8000/api/driver/${ID_DRIVER}`);
+        const { data } = response;
+        if (data.success) {
+          const {
+            DRIVER_NAME,
+            DRIVER_FIRST_NAME,
+            DRIVER_LICENSE_NUMBER,
+            DRIVER_LICENSE_EXPIRATION_DATE,
+          } = data.data;
+          setName(DRIVER_NAME || '');
+          setFirstName(DRIVER_FIRST_NAME || '');
+          setNum(DRIVER_LICENSE_NUMBER || '');
+          setDate(DRIVER_LICENSE_EXPIRATION_DATE || '');
+        } else {
+          console.log(data.message);
+        }
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    const updateDriver = async (e) => {
+      e.preventDefault();
+      
+      const data = {
+        DRIVER_NAME: name,
+        DRIVER_FIRST_NAME: Firstname,
+        DRIVER_LICENSE_NUMBER: num,
+        DRIVER_LICENSE_EXPIRATION_DATE: date,
+      };
+      
+      await axios.patch(`http://127.0.0.1:8000/api/driver/${ID_DRIVER}`, data)
+        .then(({ data }) => {
+          console.log(data.message);
+          navigate('/');
+        })
+        .catch((error) => {
+          if (error.response && error.response.status === 422) {
+            console.log(error.response.data.errors);
+          } else {
+            console.log(error.message);
+          }
+        });
+    };
+  return (
+    <Flex
+    minH={'100vh'}
+    align={'center'}
+    justify={'center'}
+    bg={useColorModeValue('gray.50', 'gray.800')}
+  >
+    <Box
+      maxW={'2xl'}
+      w={'full'}
+      bg={useColorModeValue('white', 'gray.700')}
+      boxShadow={'lg'}
+      rounded={'lg'}
+      p={6}
+      textAlign={'center'}
+    >
+      <Stack align={'center'}>
+        <Heading fontSize={'4xl'}>Update a driver</Heading>
+      </Stack>
+      <form onSubmit={updateDriver}>
+        <Stack spacing={4} mt={10}>
+          <FormControl>
+            <FormLabel>Driver Name</FormLabel>
+            <Input
+              type="text"
+              placeholder="Enter the driver name"
+              value={name}
+              onChange={(e)=>{setName(e.target.value)}}
+            />
+          </FormControl>
+          <FormControl>
+            <FormLabel>Driver First Name</FormLabel>
+            <Input
+              type="text"
+              placeholder="Enter the driver first name"
+              value={Firstname}
+              onChange={(e)=>{setFirstName(e.target.value)}}
+            />
+          </FormControl>
+          <FormControl>
+            <FormLabel>Driver License Number</FormLabel>
+            <Input
+              type="number"
+              placeholder="Enter the driver license number"
+              value={num}
+              onChange={(e)=>{setNum(e.target.value)}}
+            />
+          </FormControl>
+          <FormControl>
+            <FormLabel>Driver License Expiration Date</FormLabel>
+            <Input
+              type="date"
+              placeholder="Enter the expiration date of the driver's license"
+              value={date}
+              onChange={(e)=>{setDate(e.target.value)}}
+            />
+          </FormControl>
+          <Stack
+            spacing={10}
+            direction={{ base: 'column', sm: 'row' }}
+            align={'center'}
+            justify={'center'}
+            mt={6}
+          >
+            <Button
+              type="submit"
+              w={{ base: 'full', sm: 'auto' }}
+             
+              bg={'blue.400'}
+              color={'white'}
+              _hover={{
+                bg: 'blue.500',
+              }}
+            >
+              Update
+            </Button>
+          </Stack>
+        </Stack>
+      </form>
+    </Box>
+  </Flex>
+);
 }
+     
+   

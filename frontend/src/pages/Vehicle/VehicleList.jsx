@@ -1,326 +1,162 @@
-const VehiculeList = () => {
-    return (<div className="container px-8">
-        <div className="pt-10 w-full flex flex-col transition duration-700 ease-in-out">
-            <div className="w-full overflow-x transition duration-700 ease-in-out">
-                <table className="w-full whitespace-no-wrap">
-                    <thead>
-                    <tr
-                        className="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800 transition duration-700 ease-in-out"
-                    >
-                        <th className="px-4 py-3">User</th>
-                        <th className="px-4 py-3">Email</th>
-                        <th className="px-4 py-3">Status</th>
-                        <th className="px-4 py-3">Birthday Date</th>
-                        <th className="px-4 py-3">Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody
-                        className="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800 transition duration-700 ease-in-out"
-                    >
-                    <tr className="text-gray-700 dark:text-gray-400 transition duration-700 ease-in-out">
-                        <td className="px-4 py-3">
-                            <div className="flex items-center text-sm">
-                                <div
-                                    className="relative hidden w-8 h-8 mr-3 rounded-full md:block"
-                                >
-                                    <img
-                                        className="object-cover w-full h-full rounded-full"
-                                        alt={"profil image"}
-                                        src={"https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"}
-                                    />
-                                    <div
-                                        className="absolute inset-0 rounded-full shadow-inner"
-                                        aria-hidden="true"
-                                    ></div>
-                                </div>
-                                <div>
-                                    <p className="font-semibold">
-                                        oumai ou
-                                    </p>
-                                    <p className="text-xs text-gray-600 dark:text-gray-400 space-x-1">
-                                        <span>role</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </td>
-                        <td className="px-4 py-3 text-sm">
-                            ouma@hjhd.cd
-                        </td>
-                        <td className="px-4 py-3 text-xs">
-                        <span
-                            className="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100 transition duration-700 ease-in-out transition duration-700 ease-in-out"
-                        >
-                          Approved
-                        </span>
-                        </td>
-                        <td className="px-4 py-3 text-sm">
-                            676/_9ç/9
-                        </td>
-                        <td className="px-4 py-3">
-                            <div className="flex items-center space-x-4 text-sm">
-                                <button
-                                    className="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray transition duration-700 ease-in-out">
-                                    <svg
-                                        className="w-5 h-5"
-                                        aria-hidden="true"
-                                        fill="currentColor"
-                                        viewBox="0 0 20 20"
-                                    >
-                                        <path
-                                            d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"
-                                        ></path>
-                                    </svg>
-                                </button>
-                                <button
-                                    className="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray transition duration-700 ease-in-out">
-                                    <svg
-                                        className="w-5 h-5"
-                                        aria-hidden="true"
-                                        fill="currentColor"
-                                        viewBox="0 0 20 20"
-                                    >
-                                        <path
-                                            d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                                        ></path>
-                                    </svg>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr className="text-gray-700 dark:text-gray-400 transition duration-700 ease-in-out">
-                        <td className="px-4 py-3">
-                            <div className="flex items-center text-sm">
-                                <div
-                                    className="relative hidden w-8 h-8 mr-3 rounded-full md:block"
-                                >
-                                    <img
-                                        className="object-cover w-full h-full rounded-full"
-                                        alt={"profil image"}
-                                        src={"https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"}
-                                    />
-                                    <div
-                                        className="absolute inset-0 rounded-full shadow-inner"
-                                        aria-hidden="true"
-                                    ></div>
-                                </div>
-                                <div>
-                                    <p className="font-semibold">
-                                        oumai ou
-                                    </p>
-                                    <p className="text-xs text-gray-600 dark:text-gray-400 space-x-1">
-                                        <span>role</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </td>
-                        <td className="px-4 py-3 text-sm">
-                            ouma@hjhd.cd
-                        </td>
-                        <td className="px-4 py-3 text-xs">
-                        <span
-                            className="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100 transition duration-700 ease-in-out transition duration-700 ease-in-out"
-                        >
-                          Approved
-                        </span>
-                        </td>
-                        <td className="px-4 py-3 text-sm">
-                            676/_9ç/9
-                        </td>
-                        <td className="px-4 py-3">
-                            <div className="flex items-center space-x-4 text-sm">
-                                <button
-                                    className="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray transition duration-700 ease-in-out">
-                                    <svg
-                                        className="w-5 h-5"
-                                        aria-hidden="true"
-                                        fill="currentColor"
-                                        viewBox="0 0 20 20"
-                                    >
-                                        <path
-                                            d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"
-                                        ></path>
-                                    </svg>
-                                </button>
-                                <button
-                                    className="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray transition duration-700 ease-in-out">
-                                    <svg
-                                        className="w-5 h-5"
-                                        aria-hidden="true"
-                                        fill="currentColor"
-                                        viewBox="0 0 20 20"
-                                    >
-                                        <path
-                                            d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                                        ></path>
-                                    </svg>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr className="text-gray-700 dark:text-gray-400 transition duration-700 ease-in-out">
-                        <td className="px-4 py-3">
-                            <div className="flex items-center text-sm">
-                                <div
-                                    className="relative hidden w-8 h-8 mr-3 rounded-full md:block"
-                                >
-                                    <img
-                                        className="object-cover w-full h-full rounded-full"
-                                        alt={"profil image"}
-                                        src={"https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"}
-                                    />
-                                    <div
-                                        className="absolute inset-0 rounded-full shadow-inner"
-                                        aria-hidden="true"
-                                    ></div>
-                                </div>
-                                <div>
-                                    <p className="font-semibold">
-                                        oumai ou
-                                    </p>
-                                    <p className="text-xs text-gray-600 dark:text-gray-400 space-x-1">
-                                        <span>role</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </td>
-                        <td className="px-4 py-3 text-sm">
-                            ouma@hjhd.cd
-                        </td>
-                        <td className="px-4 py-3 text-xs">
-                        <span
-                            className="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100 transition duration-700 ease-in-out transition duration-700 ease-in-out"
-                        >
-                          Approved
-                        </span>
-                        </td>
-                        <td className="px-4 py-3 text-sm">
-                            676/_9ç/9
-                        </td>
-                        <td className="px-4 py-3">
-                            <div className="flex items-center space-x-4 text-sm">
-                                <button
-                                    className="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray transition duration-700 ease-in-out">
-                                    <svg
-                                        className="w-5 h-5"
-                                        aria-hidden="true"
-                                        fill="currentColor"
-                                        viewBox="0 0 20 20"
-                                    >
-                                        <path
-                                            d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"
-                                        ></path>
-                                    </svg>
-                                </button>
-                                <button
-                                    className="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray transition duration-700 ease-in-out">
-                                    <svg
-                                        className="w-5 h-5"
-                                        aria-hidden="true"
-                                        fill="currentColor"
-                                        viewBox="0 0 20 20"
-                                    >
-                                        <path
-                                            d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                                        ></path>
-                                    </svg>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div
-                className="w-full md:grid whitespace-no-wrap px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800 transition duration-700 ease-in-out"
-            >
-                <span className="flex items-center col-span-3">
-                  Showing 21-30 of 100
-                </span>
-                <span className="col-span-2"></span>
-                <span className="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
-                  <nav aria-label="Table navigation">
-                    <ul className="inline-flex items-center">
-                      <li>
-                        <button
-                            className="px-3 py-1 rounded-md rounded-l-lg focus:outline-none focus:shadow-outline-purple"
-                            aria-label="Previous"
-                        >
-                          <svg
-                              className="w-4 h-4 fill-current"
-                              aria-hidden="true"
-                              viewBox="0 0 20 20"
-                          >
-                            <path
-                                d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                            ></path>
-                          </svg>
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                            className="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple"
-                        >
-                          1
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                            className="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple"
-                        >
-                          2
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                            className="px-3 py-1 text-white transition-colors duration-150 border border-r-0 border-purple-600 rounded-md focus:outline-none focus:shadow-outline-purple">
-                          3
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                            className="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple"
-                        >
-                          4
-                        </button>
-                      </li>
-                      <li>
-                        <span className="px-3 py-1">...</span>
-                      </li>
-                      <li>
-                        <button
-                            className="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple"
-                        >
-                          8
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                            className="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple"
-                        >
-                          9
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                            className="px-3 py-1 rounded-md rounded-r-lg focus:outline-none focus:shadow-outline-purple"
-                            aria-label="Next"
-                        >
-                          <svg
-                              className="w-4 h-4 fill-current"
-                              aria-hidden="true"
-                              viewBox="0 0 20 20"
-                          >
-                            <path
-                                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                            ></path>
-                          </svg>
-                        </button>
-                      </li>
-                    </ul>
-                  </nav>
-                </span>
-            </div>
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+import { FaEdit, FaTrash } from 'react-icons/fa';
+
+export default function VehicleList() {
+  const [vehicles, setVehicles] = useState([]);
+
+  useEffect(() => {
+    fetchVehicles();
+  }, []);
+
+  const fetchVehicles = async () => {
+    try {
+      const response = await axios.get('http://127.0.0.1:8000/api/vehicle');
+      console.log('Response:', response.data);
+      setVehicles(response.data.data);
+    } catch (error) {
+      console.log('Error fetching vehicles:', error);
+    }
+  };
+ 
+  const deleteVehicle = async (ID_VEHICLE) => {
+    try {
+        await axios.delete('http://127.0.0.1:8000/api/vehicle/' + ID_VEHICLE);
+        console.log('Vehicle deleted successfully');
+      fetchVehicles();
+    } catch (error) {
+      console.log('Error deleting vehicle:', error);
+    }
+  };
+
+  return (
+    <div className="px-4 sm:px-6 lg:px-8">
+      <div className="sm:flex sm:items-center">
+        <div className="sm:flex-auto">
+          <h1 className="text-xl font-semibold text-gray-900">Vehicles</h1>
+          <p className="mt-2 text-sm text-gray-700">A list of all the vehicles</p>
         </div>
-    </div>)
+        <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
+          <button
+            type="button"
+            className="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto"
+            as={Link}
+            to="/VehicleAdd"
+            style={{ backgroundColor: '#4C51BF' }}
+          >
+            Add vehicle
+          </button>
+        </div>
+      </div>
+      <div className="mt-8 flex flex-col">
+        <div className="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+            <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+              <table className="min-w-full divide-y divide-gray-300">
+                <thead className="bg-gray-50 dark:bg-gray-800">
+                  <tr>
+                    <th
+                      scope="col"
+                      className="px-3 py-3.5 text-center text-sm font-semibold text-gray-900"
+                    >
+                      Vehicle Model
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-3 py-3.5 text-center text-sm font-semibold text-gray-900"
+                    >
+                      Vehicle Brand
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-3 py-3.5 text-center text-sm font-semibold text-gray-900"
+                    >
+                      Manufacturing Year
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-3 py-3.5 text-center text-sm font-semibold text-gray-900"
+                    >
+                      Vehicle Registration
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-3 py-3.5 text-center text-sm font-semibold text-gray-900"
+                    >
+                      Chassis Number
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-3 py-3.5 text-center text-sm font-semibold text-gray-900"
+                    >
+                      Vehicle Mileage
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-3 py-3.5 text-center text-sm font-semibold text-gray-900"
+                    >
+                      Vehicle Color
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-3 py-3.5 text-center text-sm font-semibold text-gray-900"
+                    >
+                      Vehicle Image
+                    </th>
+                                      
+                    <th
+                      scope="col"
+                      className="px-3 py-3.5 text-center text-sm font-semibold text-gray-900"
+                    >
+                      Actions
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-200 bg-white dark:bg-gray-900">
+                  {vehicles.length > 0 &&
+                    vehicles.map((vehicle) => (
+                      <tr key={vehicle.ID_VEHICLE} className="hover:bg-gray-100">
+                        <td className="py-4">{vehicle.VEHICLE_MODEL}</td>
+                        <td className="py-4">{vehicle.VEHICLE_BRAND}</td>
+                        <td className="py-4">{vehicle.VEHICLE_MANUFACTURING_YEAR}</td>
+                        <td className="py-4">{vehicle.VEHICLE_REGISTRATION}</td>
+                        <td className="py-4">{vehicle.CHASSIS_NUMBER}</td>
+                        <td className="py-4">{vehicle.VEHICLE_MILEAGE}</td>
+                            <td className="py-4">{vehicle.color}</td>
+                            <td className="py-4">
+                        <div className="flex items-center justify-center space-x-2">
+                                <img
+                                className="h-32 w-32 object-contain"
+                                src={`http://127.0.0.1:8000/storage/vehicle/image/${vehicle.image}`}
+                                alt="Vehicle"
+                                />
+                            </div>
+                            </td>
+
+                        <td className="flex items-center justify-center space-x-2 py-4">
+                        <Link
+                            className="btn btn-success mb-2 mr-2"
+                            to={`/vehicle/edit/${vehicle.ID_VEHICLE}`}
+                        >
+                            <FaEdit className="text-lg text-green-500" />
+                        </Link>
+                        <button
+                            type="button"
+                            className="btn btn-danger mb-2"
+                            onClick={() => deleteVehicle(vehicle.ID_VEHICLE)}
+                        >
+                            <FaTrash className="text-lg text-red-500" />
+                        </button>
+                        </td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
-export default VehiculeList

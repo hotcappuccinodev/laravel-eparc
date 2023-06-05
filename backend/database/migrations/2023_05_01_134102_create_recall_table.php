@@ -11,10 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('oauth_personal_access_clients', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->uuid('client_id');
+        Schema::create('recall', function (Blueprint $table) {
+            $table->id('ID_RECALL', 60);
+            $table->bigInteger('ID_VEHICLE')->unsigned();
+            $table->string('RECALL_DESCRIPTION', 60)->nullable();
+            $table->date('DATE')->nullable();
             $table->timestamps();
+            $table->foreign('ID_VEHICLE')->references('ID_VEHICLE')->on('VEHICLE');
+
         });
     }
 
@@ -23,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('oauth_personal_access_clients');
+        Schema::dropIfExists('recall');
     }
 };

@@ -17,6 +17,7 @@ import {
     Input,
     InputGroup,
     InputRightElement,
+    Spinner,
     Stack,
     Text,
     useDisclosure,
@@ -25,12 +26,13 @@ import {
 import {useRef, useState} from 'react';
 import FooterBanner from '../../components/footerBanner';
 import {ViewIcon, ViewOffIcon} from '@chakra-ui/icons';
-import {Link as ReachLink} from 'react-router-dom';
+import {Link as ReachLink, useNavigate} from 'react-router-dom';
 import axios from '../../plugins/axios';
 
 export default function Login() {
 
     const [showPassword, setShowPassword] = useState(false);
+    const [isHandelLogin, setIsHandelLogin] = useState(false);
 
     const [emailInput, setEmailInput] = useState('')
     const [passwordInput, setPasswordInput] = useState('')
@@ -38,6 +40,8 @@ export default function Login() {
 
     const [emailError, setEmailError] = useState(false)
     const [passwordError, setPasswordError] = useState(false)
+
+    const navigate = useNavigate();
 
     async function handlePasswordInputChange(e) {
         await setPasswordInput(e.target.value);
@@ -72,11 +76,13 @@ export default function Login() {
     async function handleLogin(e) {
 
         e.preventDefault();
+        setIsHandelLogin(true);
 
         await setPasswordError(passwordInput === '');
         await setEmailError(emailInput === '');
 
         if (emailError || passwordError || passwordInput === '' || emailInput === '') {
+            setIsHandelLogin(false);
             await toast({
                 title: 'Please validate all fields.',
                 status: 'error',
@@ -89,26 +95,34 @@ export default function Login() {
         try {
             const response = await axios({
                 method: 'POST',
-                url: '/login',
+                url: 'login',
                 data: {
                     email: emailInput,
                     password: passwordInput,
                     rememberMe: rememberMe
                 },
             })
-            console.log(response);
+            setIsHandelLogin(false);
+            localStorage.setItem('app:auth', JSON.stringify({USER_TOKEN: response.data.token}));
+            await toast({
+                title: `Welcome back, ${response.data.user.firstName} ${response.data.user.lastName} !`,
+                status: 'success',
+                position: 'bottom-right',
+                isClosable: true,
+            })
+            navigate('/');
         } catch (error) {
-            console.log(error);
             onOpen();
+            setIsHandelLogin(false);
         }
     }
 
     return (
-        <div className={'h-screen max-h-screen relative'} >
+        <div className={'h-screen max-h-screen relative'}>
             <Stack height={'100vh'} direction={{base: 'column', md: 'row'}}>
                 <Flex flex={1} align={'center'} justify={'center'} className={'pt-10 md:pt-0'}>
                     <Stack p={8} spacing={4} w={'full'} maxW={'md'}>
-                        <Heading fontSize='2xl' mb='10' >
+                        <Heading fontSize={'2xl'} mb={'10'}>
                             Sign in to your account
                         </Heading>
                         <FormControl id="email" isInvalid={emailError} isRequired>
@@ -154,17 +168,20 @@ export default function Login() {
                                     Forgot password ?
                                 </Button>
                             </Stack>
-                            <Button bg={'red.400'} variant={'solid'}
+                            <Button bg={isHandelLogin && 'red.200' || 'red.400'} variant={'solid'}
+                                    className={isHandelLogin && 'cursor-not-allowed'}
                                     loadingText="Submitting"
                                     type="submit"
                                     size="lg"
                                     color={'white'}
                                     onClick={handleLogin}
                                     _hover={{
-                                        bg: 'red.500',
+                                        bg: !isHandelLogin && 'red.500',
                                     }}
                             >
                                 Sign in
+                                &nbsp;&nbsp;
+                                {isHandelLogin && <Spinner/>}
                             </Button>
                         </Stack>
                         <Stack pt={6} align={'center'}>
@@ -236,5 +253,6 @@ export default function Login() {
                 </AlertDialog>
             </>
         </div>
-    );
+    )
+        ;
 }

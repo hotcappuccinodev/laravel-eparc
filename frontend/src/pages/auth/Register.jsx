@@ -10,20 +10,30 @@ import {
     Input,
     InputGroup,
     InputRightElement,
+    Spinner,
     Stack,
     Text,
     useToast
 } from '@chakra-ui/react';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {ViewIcon, ViewOffIcon} from '@chakra-ui/icons';
-import {Link as ReachLink} from 'react-router-dom';
-import Swal from 'sweetalert2'
+import {Link as ReachLink, useNavigate} from 'react-router-dom';
+import Swal from 'sweetalert2';
 import axios from '../../plugins/axios';
 import FooterBanner from "../../components/footerBanner";
 
 export default function Register() {
-
     const [showPassword, setShowPassword] = useState(false);
+    const [showPasswordConfirm, setShowPasswordConfirm] = useState(false);
+    const [isHandelRegister, setIsHandelRegister] = useState(false);
+
+    const EMAIL_REGEX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+    const [flag, setFlag] = useState(false);
+
+    const navigate = useNavigate();
+    const toast = useToast();
+
 
     const [data, setData] = useState({
         firstName: '',
@@ -33,74 +43,112 @@ export default function Register() {
         password_confirmation: '',
     });
 
-    const toast = useToast();
+    const [errors, setErrors] = useState({
+        firstName: false,
+        lastName: false,
+        email: false,
+        password: false,
+        password_confirmation: false,
+    });
 
-    const handleChange = async e => {
+    useEffect(() => {
+        if (flag) {
+            setErrors({
+                ...errors,
+                password_confirmation:
+                    data.password_confirmation === '' ||
+                    data.password !== data.password_confirmation,
+            });
+        }
+    }, [data.password, data.password_confirmation]);
+
+
+    const handleChange = async (e) => {
+        const {id, value} = e.target;
         await setData({
             ...data,
-            [e.target.id]: e.target.value,
+            [id]: value,
         });
-        await handleError();
+        if (flag) {
+            await setErrors({
+                ...errors,
+                [id]: value === '',
+                firstName: data.firstName === '',
+                lastName: data.lastName === '',
+                email: data.email === '' || !EMAIL_REGEX.test(data.email),
+                password: data.password === '' || data.password.length < 8,
+                password_confirmation: data.password_confirmation === '' || data.password_confirmation !== data.password_confirmation
+            });
+        }
+        if (id === 'password_confirmation') {
+            setErrors({
+                ...errors,
+                password_confirmation:
+                    value === '' || value !== data.password
+            });
+        }
     };
 
-    const [showPasswordConfirm, setShowPasswordConfirm] = useState(false);
-
-    const [emailError, setEmailError] = useState(false)
-    const [firstNameError, setFirstNameError] = useState(false)
-    const [lastNameError, setLastNameError] = useState(false)
-    const [passwordError, setPasswordError] = useState(false)
-    const [confirmPasswordError, setConfirmPasswordError] = useState(false)
-
-    const [emailErrorMsg, setEmailErrorMsg] = useState('Email is required.');
-    const [passwordErrorMsg, setPasswordErrorMsg] = useState('Password is required.');
-    const [confirmPasswordErrorMsg, setConfirmPasswordErrorMsg] = useState('Confirm Password is required.');
-
-    const EMAIL_REGEX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-
-    const handleError = async () => {
-        await setEmailError(data.email === '');
-        await setPasswordError(data.password === '');
-        await setFirstNameError(data.firstName === '');
-        await setLastNameError(data.lastName === '');
-        await setConfirmPasswordError(data.password_confirmation === '');
-    };
-
-    const handleRegister = async e => {
-
+    const handleRegister = async (e) => {
         e.preventDefault();
+        setFlag(true);
+        setIsHandelRegister(true);
 
-        await handleError();
+        const {
+            firstName,
+            lastName,
+            email,
+            password,
+            password_confirmation,
+        } = data;
 
-        if (emailError || passwordError || firstNameError || lastNameError || confirmPasswordError || data.password !== data.password_confirmation || data.password.length < 8 || data.password_confirmation.length < 8) {
-            await toast({
-                title: 'Please validate all fields.',
+        setErrors({
+            firstName: firstName === '',
+            lastName: lastName === '',
+            email: email === '' || !EMAIL_REGEX.test(email),
+            password: password === '' || password.length < 8,
+            password_confirmation: password_confirmation === '' || password !== password_confirmation,
+        });
+
+        if (
+            firstName === '' ||
+            lastName === '' ||
+            email === '' ||
+            password === '' ||
+            password_confirmation === '' ||
+            !EMAIL_REGEX.test(email) ||
+            password !== password_confirmation ||
+            password.length < 8
+        ) {
+            setIsHandelRegister(false); 
+            toast({
+                title: 'Please fill in all required fields.',
                 status: 'error',
                 position: 'bottom-right',
                 isClosable: true,
-            })
+            });
             return;
         }
-
-        console.log(data);
 
         try {
             const response = await axios({
                 method: 'POST',
                 url: '/register',
                 data: {
-                    email: data.email,
-                    password: data.password,
+                    firstName,
+                    lastName,
+                    email,
+                    password,
+                    password_confirmation,
                 },
-            })
-            console.log(response)
-            Swal.fire('Connexion réussie', '', 'success').then(() => {
-                localStorage.setItem('patient', JSON.stringify(response.data.patient))
-                localStorage.setItem('patient-token', response.data.token)
-                // navigate(-2)
-            })
+            });
+            setIsHandelRegister(false);
+            Swal.fire('Registration successful', '', 'success').then(() => {
+                navigate('/login');
+            });
         } catch (error) {
-            console.log(error)
-            await Swal.fire('Erreur', '', 'error')
+            setIsHandelRegister(false);
+            Swal.fire('Error', '', 'error');
         }
     };
 
@@ -124,34 +172,36 @@ export default function Register() {
                             Creat a new account
                         </Heading>
                         <HStack>
-                            <FormControl id="firstName" isInvalid={firstNameError} isRequired>
+                            <FormControl id="firstName" isInvalid={errors.firstName} isRequired>
                                 <FormLabel>First Name</FormLabel>
-                                <Input type="text" value={data.firstName} onChange={handleChange}/>
-                                {firstNameError ? (
+                                <Input type="text" value={data.firstName} onChange={handleChange}
+                                       onBlur={handleChange}/>
+                                {errors.firstName && (
                                     <FormErrorMessage>First Name is required</FormErrorMessage>
-                                ) : (<br/>)}
+                                ) || (<br/>)}
                             </FormControl>
-                            <FormControl id="lastName" isInvalid={lastNameError} isRequired>
+                            <FormControl id="lastName" isInvalid={errors.lastName} isRequired>
                                 <FormLabel>Last Name</FormLabel>
-                                <Input type="text" onChange={handleChange}/>
-                                {lastNameError ? (
+                                <Input type="text" onChange={handleChange} onBlur={handleChange}/>
+                                {errors.lastName && (
                                     <FormErrorMessage>Last Name is required</FormErrorMessage>
-                                ) : (<br/>)}
+                                ) || (<br/>)}
                             </FormControl>
                         </HStack>
-                        <FormControl id="email" isInvalid={emailError} isRequired>
+                        <FormControl id="email" isInvalid={errors.email} isRequired>
                             <FormLabel>Email address</FormLabel>
-                            <Input type="email" onChange={handleChange}/>
-                            {emailError ? (
-                                <FormErrorMessage>{emailErrorMsg}</FormErrorMessage>
-                            ) : (<br/>)}
+                            <Input type="email" onChange={handleChange} onBlur={handleChange}/>
+                            {errors.email && (
+                                <FormErrorMessage>Email is required and should be a valid email
+                                    address</FormErrorMessage>
+                            )}
                         </FormControl>
-                        <FormControl id="password" isInvalid={passwordError} isRequired>
+                        <FormControl id="password" isInvalid={errors.password} isRequired>
                             <FormLabel>Password</FormLabel>
                             <InputGroup>
                                 <Input
                                     type={showPassword ? 'text' : 'password'}
-                                    onChange={handleChange}
+                                    onChange={handleChange} onBlur={handleChange}
                                 />
                                 <InputRightElement h={'full'}>
                                     <Button
@@ -164,16 +214,28 @@ export default function Register() {
                                     </Button>
                                 </InputRightElement>
                             </InputGroup>
-                            {passwordError ? (
-                                <FormErrorMessage>{passwordErrorMsg}</FormErrorMessage>
-                            ) : ('')}
+                            {errors.password && (
+                                <FormErrorMessage>
+                                    Password is required and should be at least 8 characters long
+                                </FormErrorMessage>
+                            )}
                         </FormControl>
-                        <FormControl id="password_confirmation" isInvalid={confirmPasswordError} isRequired>
+                        <FormControl id="password_confirmation" isInvalid={errors.password_confirmation} isRequired>
                             <FormLabel>Confirm Password</FormLabel>
                             <InputGroup>
                                 <Input
                                     type={showPasswordConfirm ? 'text' : 'password'}
                                     onChange={handleChange}
+                                    onBlur={() =>
+                                        setErrors({
+                                            ...errors,
+                                            password_confirmation:
+                                                data.password_confirmation === '' ||
+                                                data.password !== data.password_confirmation
+                                                    ? 'Confirm Password is required or does not match Password'
+                                                    : '',
+                                        })
+                                    }
                                 />
                                 <InputRightElement h={'full'}>
                                     <Button
@@ -188,23 +250,25 @@ export default function Register() {
                                     </Button>
                                 </InputRightElement>
                             </InputGroup>
-                            {confirmPasswordError ? (
-                                <FormErrorMessage>{confirmPasswordErrorMsg}</FormErrorMessage>
-                            ) : ('')}
+                            {errors.password_confirmation && (
+                                <FormErrorMessage>Confirm Password is required</FormErrorMessage>
+                            )}
                         </FormControl>
                         <Stack spacing={15} pt={2} mt={'10'}>
-                            <Button
-                                loadingText="Submitting"
-                                type="submit"
-                                size="lg"
-                                bg={'red.400'}
-                                color={'white'}
-                                onClick={handleRegister}
-                                _hover={{
-                                    bg: 'red.500',
-                                }}
+                            <Button bg={isHandelRegister && 'red.200' || 'red.400'} variant={'solid'}
+                                    className={isHandelRegister && 'cursor-not-allowed'}
+                                    loadingText="Submitting"
+                                    type="submit"
+                                    size="lg"
+                                    color={'white'}
+                                    onClick={handleRegister}
+                                    _hover={{
+                                        bg: !isHandelRegister && 'red.500',
+                                    }}
                             >
-                                Sign up
+                                Sign in
+                                &nbsp;&nbsp;
+                                {isHandelRegister && <Spinner/>}
                             </Button>
                         </Stack>
                         <Stack pt={6} align={'center'}>

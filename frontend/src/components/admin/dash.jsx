@@ -19,21 +19,16 @@ import {
     useDisclosure,
     VStack,
 } from '@chakra-ui/react';
-import {FiBell, FiChevronDown, FiCompass, FiHome, FiMenu, FiSettings, FiStar, FiTrendingUp} from 'react-icons/fi';
-import {IoMdCar} from 'react-icons/io';
-import {RiSteering2Fill} from 'react-icons/ri';
-import {HiOutlineNewspaper} from 'react-icons/hi';
+import { FiBell, FiChevronDown, FiCompass, FiHome, FiMenu, FiSettings, FiStar, FiTrendingUp, FiTruck, FiFileText, FiUser } from 'react-icons/fi';
 
 const LinkItems = [
-    {name: 'Home', icon: FiHome},
-    {name: 'Trending', icon: FiTrendingUp},
-    {name: 'Explore', icon: FiCompass},
-    {name: 'Favourites', icon: FiStar},
-    {name: 'Car', icon: IoMdCar},
-    {name: 'insurance', icon: HiOutlineNewspaper},
-    {name: 'Driver', icon: RiSteering2Fill},
-    {name: 'Settings', icon: FiSettings},
+  { name: 'Home', icon: FiHome },
+  { name: 'Vehicle', icon: FiTruck },
+  { name: 'Insurance', icon: FiFileText },
+  { name: 'Driver', icon: FiUser },
+  { name: 'Settings', icon: FiSettings },
 ];
+
 
 export default function SidebarWithHeader({
                                               children
@@ -79,7 +74,7 @@ const SidebarContent = ({onClose, ...rest}) => {
             {...rest}>
             <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
                 <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-                    UmaiCar
+                 FleetLinker
                 </Text>
                 <CloseButton display={{base: 'flex', md: 'none'}} onClick={onClose}/>
             </Flex>

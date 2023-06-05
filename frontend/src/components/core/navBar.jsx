@@ -22,7 +22,7 @@ export default function WithSubnavigation() {
     const {isOpen, onToggle} = useDisclosure();
 
     return (
-        <Box position='fixed' w='100%' zIndex='sticky'>
+        <Box>
             <Flex
                 bg={useColorModeValue('white', 'gray.800')}
                 color={useColorModeValue('gray.600', 'white')}
@@ -51,7 +51,7 @@ export default function WithSubnavigation() {
                         textAlign={useBreakpointValue({base: 'center', md: 'left'})}
                         fontFamily={'heading'}
                         color={useColorModeValue('gray.800', 'white')}>
-                        Eparc
+                        FleetLinker
                     </Text>
 
                     <Flex display={{base: 'none', md: 'flex'}} ml={10}>
@@ -243,21 +243,7 @@ const MobileNavItem = ({label, children, href}) => {
 
 
 const NAV_ITEMS = [
-    {
-        label: 'Inspiration',
-        children: [
-            {
-                label: 'Explore Design Work',
-                subLabel: 'Trending Design to inspire you',
-                href: '#',
-            },
-            {
-                label: 'New & Noteworthy',
-                subLabel: 'Up-and-coming Designers',
-                href: '#',
-            },
-        ],
-    },
+
     {
         label: 'Find Work',
         children: [
