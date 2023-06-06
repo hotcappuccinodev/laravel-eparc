@@ -107,7 +107,7 @@ export default function Login() {
             await toast({
                 title: `Welcome back, ${response.data.user.firstName} ${response.data.user.lastName} !`,
                 status: 'success',
-                position: 'bottom-right',
+                position: 'bottom',
                 isClosable: true,
             })
             navigate('/');
